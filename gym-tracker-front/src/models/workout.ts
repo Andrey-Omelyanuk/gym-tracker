@@ -1,4 +1,4 @@
-import { local, model, Model, id, field, many } from 'mobx-orm'
+import { local, model, Model, id, field } from 'mobx-orm'
 import Exercise from './exercise'
 
 
@@ -9,5 +9,3 @@ import Exercise from './exercise'
 
     exercises   : Exercise[]
 }
-// TODO: sould I declare it near by Exercise instead of Workout (like I have done now)?
-many(Exercise)(Workout, 'exercises') 

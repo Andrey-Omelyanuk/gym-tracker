@@ -14,4 +14,4 @@ import Workout from './workout'
 
     sets: Set[]
 }
-many(Set)(Exercise, 'sets') 
+many(Exercise)(Workout, 'exercises') 

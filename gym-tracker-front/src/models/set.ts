@@ -1,4 +1,4 @@
-import { local, model, Model, id, field, foreign } from 'mobx-orm'
+import { local, model, Model, id, field, foreign, many } from 'mobx-orm'
 import Exercise from './exercise'
 
 
@@ -12,3 +12,4 @@ import Exercise from './exercise'
 
     @foreign(Exercise) exercise : Exercise 
 }
+many(Set)(Exercise, 'sets') 
