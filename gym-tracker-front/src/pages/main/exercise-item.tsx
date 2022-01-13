@@ -3,11 +3,11 @@ import { observer } from 'mobx-react'
 import { observable } from 'mobx'
 import { IonButton, IonProgressBar, IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonLabel, IonItem } from '@ionic/react';
 import { Query } from 'mobx-orm';
-import Workout from '../../../models/workout';
+import Workout from '../../models/workout';
 
 
 @observer
-class WorkoutDetails extends React.Component {
+class ExerciseItem extends React.Component {
   name = 'test'
 
   @observable workouts: Query<Workout>
@@ -54,9 +54,6 @@ class WorkoutDetails extends React.Component {
           </IonToolbar>
         </IonHeader>
 
-     {/* <ion-label position="stacked">Stacked Label</ion-label>
-            <ion-input placeholder="placeholder"></ion-input> */}
-
         <IonContent fullscreen>
           { !this.is_ready && <IonProgressBar type="indeterminate"></IonProgressBar>}
           <IonHeader collapse="condense">
@@ -78,4 +75,4 @@ class WorkoutDetails extends React.Component {
   }
 }
 
-export default WorkoutDetails;
+export default ExerciseItem;

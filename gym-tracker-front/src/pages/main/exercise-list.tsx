@@ -3,11 +3,11 @@ import { observer } from 'mobx-react'
 import { observable } from 'mobx'
 import { IonButton, IonProgressBar, IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonLabel, IonItem } from '@ionic/react';
 import { Query } from 'mobx-orm';
-import Workout from '../../../models/workout';
+import Workout from '../../models/workout';
 
 
 @observer
-class Workouts extends React.Component {
+class ExerciseList extends React.Component {
   name = 'test'
 
   @observable workouts: Query<Workout>
@@ -75,4 +75,4 @@ class Workouts extends React.Component {
   }
 }
 
-export default Workouts;
+export default ExerciseList;

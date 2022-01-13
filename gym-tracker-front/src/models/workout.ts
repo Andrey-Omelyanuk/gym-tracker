@@ -1,5 +1,6 @@
 import { local, model, Model, id, field } from 'mobx-orm'
-import Exercise from './exercise'
+import WorkoutExercise  from './workout-exercise'
+import WorkoutPlan      from './workout-plan'
 
 
 @local()
@@ -7,5 +8,6 @@ import Exercise from './exercise'
     @id    id 	: number 
     @field name	: string
 
-    exercises   : Exercise[]
+    exercises   : WorkoutExercise[]
+    plans       : WorkoutPlan[]
 }

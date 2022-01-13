@@ -3,23 +3,18 @@ import { observer } from 'mobx-react'
 import { observable } from 'mobx'
 import { IonButton, IonProgressBar, IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonLabel, IonItem } from '@ionic/react';
 import { Query } from 'mobx-orm';
-import Workout from '../../../models/workout';
+import Workout from '../../models/workout';
 
 
 @observer
-class WorkoutDetails extends React.Component {
-  name = 'test'
+class MuscleList extends React.Component {
 
   @observable workouts: Query<Workout>
 
   constructor(props) {
     super(props);
-    // Не вызывайте здесь this.setState()!
-    // this.state = { counter: 0 };
-
     // Эта привязка обязательна для работы `this` в колбэке.
     // this.createWorkout= this.createWorkout.bind(this);
-
     this.workouts = Workout.load() as any
   }
 
@@ -28,7 +23,6 @@ class WorkoutDetails extends React.Component {
   }
 
   componentDidMount() {
-    // if (!this.workouts) this.workouts = Workout.load() as any
   }
 
   createWorkout() {
@@ -50,20 +44,12 @@ class WorkoutDetails extends React.Component {
             <IonButtons slot="start">
               <IonMenuButton />
             </IonButtons>
-            <IonTitle>{this.name}</IonTitle>
+            <IonTitle>Workouts</IonTitle>
           </IonToolbar>
         </IonHeader>
 
-     {/* <ion-label position="stacked">Stacked Label</ion-label>
-            <ion-input placeholder="placeholder"></ion-input> */}
-
         <IonContent fullscreen>
           { !this.is_ready && <IonProgressBar type="indeterminate"></IonProgressBar>}
-          <IonHeader collapse="condense">
-            <IonToolbar>
-              <IonTitle size="large">{this.name}</IonTitle>
-            </IonToolbar>
-          </IonHeader>
           <div>test</div>
           {this.workouts && <div>Workouts {this.workouts.items.length}</div>}
           {this.workouts && this.workouts.items.map(function(workout: Workout){
@@ -78,4 +64,4 @@ class WorkoutDetails extends React.Component {
   }
 }
 
-export default WorkoutDetails;
+export default MuscleList;
