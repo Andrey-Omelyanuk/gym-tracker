@@ -1,7 +1,7 @@
 import { local, model, Model, id, field } from 'mobx-orm'
 
 @local()
-@model class ExerciseFact extends Model { 
+@model export default class WorkoutExerciseFact extends Model { 
     @id    id 	: number 
     @field name	: string
 }

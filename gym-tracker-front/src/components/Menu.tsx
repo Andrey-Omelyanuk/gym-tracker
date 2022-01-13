@@ -25,6 +25,9 @@ const appPages: AppPage[] = [
   { title: 'Exercises', url: '/exercise/list' , iosIcon: mailOutline, mdIcon: mailSharp },
   { title: 'Muscles'  , url: '/muscle/list'   , iosIcon: mailOutline, mdIcon: mailSharp },
   { title: 'Trainers' , url: '/trainer/list'  , iosIcon: mailOutline, mdIcon: mailSharp },
+  { title: 'History'  , url: '/workout/history', iosIcon: mailOutline, mdIcon: mailSharp },
+  { title: 'Plan'     , url: '/workout/plan'  , iosIcon: mailOutline, mdIcon: mailSharp },
+  { title: 'Run'      , url: '/workout/run'   , iosIcon: mailOutline, mdIcon: mailSharp },
 
   { title: 'Spam', url: '/page/Spam', iosIcon: warningOutline, mdIcon: warningSharp }
 ];

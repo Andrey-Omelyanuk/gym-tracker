@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { observer } from 'mobx-react'
 import { observable } from 'mobx'
@@ -8,9 +9,8 @@ import { RouteComponentProps, withRouter } from 'react-router';
 
 
 @observer
-class WorkoutItem extends React.Component<RouteComponentProps> {
+class WorkoutRun extends React.Component {
 
-  @observable workout: Workout
 
   constructor(props) {
     super(props);
@@ -19,7 +19,7 @@ class WorkoutItem extends React.Component<RouteComponentProps> {
 
     // Эта привязка обязательна для работы `this` в колбэке.
     // this.createWorkout= this.createWorkout.bind(this);
-    this.workout = Workout.get(this.props.match.params['id']) as any
+    // this.workout = Workout.get(this.props.match.params['id']) as any
   }
 
   componentDidMount() {
@@ -44,11 +44,11 @@ class WorkoutItem extends React.Component<RouteComponentProps> {
               <IonTitle size="large">test</IonTitle>
             </IonToolbar>
           </IonHeader>
-          <div>id: {this.workout.id}</div>
+          <div>run</div>
         </IonContent>
       </IonPage>
     );
   }
 }
 
-export default withRouter(WorkoutItem);
+export default WorkoutRun;

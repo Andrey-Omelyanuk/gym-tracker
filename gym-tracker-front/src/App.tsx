@@ -29,6 +29,10 @@ import MuscleItem from './pages/main/muscle-item';
 import MuscleList from './pages/main/muscle-list';
 import ExerciseItem from './pages/main/exercise-item';
 import ExerciseList from './pages/main/exercise-list';
+import WorkoutHistory from './pages/main/workout-history';
+import WorkoutPlan from './pages/main/workout-plan';
+import WorkoutRun from './pages/main/workout-run';
+
 
 setupIonicReact();
 
@@ -40,15 +44,18 @@ const App: React.FC = () => {
         <IonSplitPane contentId="main">
           <Menu />
           <IonRouterOutlet id="main">
-            <Route path="/exercise/list"> <ExerciseList/> </Route> 
-            <Route path="/exercise/item"> <ExerciseItem/> </Route> 
-            <Route path="/muscle/list"> <MuscleList/> </Route> 
-            <Route path="/muscle/item"> <MuscleItem/> </Route> 
-            <Route path="/trainer/list"> <TrainerList/> </Route> 
-            <Route path="/trainer/item"> <TrainerItem/> </Route> 
-            <Route path="/workout/list"> <WorkoutLIst/> </Route> 
-            <Route path="/workout/item"> <WorkoutItem/> </Route> 
-            <Route path="/" exact={true}> <Redirect to="/workout/list" /> </Route>
+            <Route path="/workout/history">   <WorkoutHistory/></Route> 
+            <Route path="/workout/plan">      <WorkoutPlan/>  </Route> 
+            <Route path="/workout/run">       <WorkoutRun/>   </Route> 
+            <Route path="/exercise/list">     <ExerciseList/> </Route> 
+            <Route path="/exercise/item/:id"> <ExerciseItem/> </Route> 
+            <Route path="/muscle/list">       <MuscleList/>   </Route> 
+            <Route path="/muscle/item/:id">   <MuscleItem/>   </Route> 
+            <Route path="/trainer/list">      <TrainerList/>  </Route> 
+            <Route path="/trainer/item/:id">  <TrainerItem/>  </Route> 
+            <Route path="/workout/list">      <WorkoutLIst/>  </Route> 
+            <Route path="/workout/item/:id">  <WorkoutItem/>  </Route> 
+            <Route path="/" exact={true}>     <Redirect to="/workout/list" /> </Route>
           </IonRouterOutlet>
         </IonSplitPane>
       </IonReactRouter>

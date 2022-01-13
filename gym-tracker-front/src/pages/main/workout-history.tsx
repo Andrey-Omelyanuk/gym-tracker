@@ -4,13 +4,13 @@ import { observable } from 'mobx'
 import { IonButton, IonProgressBar, IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonLabel, IonItem, IonBackButton } from '@ionic/react';
 import { Query } from 'mobx-orm';
 import Workout from '../../models/workout';
-import { RouteComponentProps, withRouter } from 'react-router';
+import { RouteComponentProps } from 'react-router';
 
 
 @observer
-class WorkoutItem extends React.Component<RouteComponentProps> {
+class WorkoutHistory extends React.Component {
 
-  @observable workout: Workout
+//   @observable workout: Workout
 
   constructor(props) {
     super(props);
@@ -19,7 +19,7 @@ class WorkoutItem extends React.Component<RouteComponentProps> {
 
     // Эта привязка обязательна для работы `this` в колбэке.
     // this.createWorkout= this.createWorkout.bind(this);
-    this.workout = Workout.get(this.props.match.params['id']) as any
+    // this.workout = Workout.get(this.props.match.params['id']) as any
   }
 
   componentDidMount() {
@@ -44,11 +44,11 @@ class WorkoutItem extends React.Component<RouteComponentProps> {
               <IonTitle size="large">test</IonTitle>
             </IonToolbar>
           </IonHeader>
-          <div>id: {this.workout.id}</div>
+          <div>history</div>
         </IonContent>
       </IonPage>
     );
   }
 }
 
-export default withRouter(WorkoutItem);
+export default WorkoutHistory; 
