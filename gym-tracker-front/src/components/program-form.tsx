@@ -1,8 +1,8 @@
 import React from 'react'
 import { observer } from 'mobx-react'
-import { IonButton,  IonLabel, IonItem,  IonList, IonInput, IonTextarea, NavContext, IonIcon, IonFabButton } from '@ionic/react';
+import { IonButton,  IonLabel, IonItem,  IonList, IonInput, IonTextarea, NavContext, IonIcon, IonFabButton, IonReorderGroup, IonReorder, IonListHeader } from '@ionic/react';
 import Program from '../models/program';
-import { trashOutline } from 'ionicons/icons';
+import { duplicateOutline, trashOutline } from 'ionicons/icons';
 import ProgramSet from '../models/program-set';
 
 type ProgramFormProps = {
@@ -48,15 +48,26 @@ class ProgramForm extends React.Component<ProgramFormProps> {
 
                 <div>Ex count: {this.props.program.sets.length}</div>
                 <IonList>
-                    {this.props.program.sets && this.props.program.sets.map(function(set: ProgramSet){
-                        return <IonItem key={set.__id}>
-                                    <IonLabel>test</IonLabel>
-                                    <IonButton color='danger'>
-                                        <IonIcon icon={trashOutline} />
-                                    </IonButton>
-                                </IonItem>
+                    <IonReorderGroup disabled={false} >
+                    {this.props.program.getOrderedSets().map(function(pair) {
+                        return <React.Fragment>
+                                <IonListHeader>{pair[0].name}</IonListHeader>
+                                {pair[1].map(function(set) { 
+                                    return <IonItem key={set.__id}>
+                                        <IonReorder slot="start" />
+                                        <IonLabel>{set.exercise.name} {set.reps}reps {set.weight}kg</IonLabel>
+                                        <IonButton slot="start">
+                                            <IonIcon icon={duplicateOutline} />
+                                        </IonButton>
+                                        <IonButton color='danger'>
+                                            <IonIcon icon={trashOutline} />
+                                        </IonButton>
+                                    </IonItem>
+                                })}
+                            </React.Fragment>
                     })}
-                    <IonButton expand='block' color='success'> Add Exercise </IonButton>
+                    </IonReorderGroup>
+                    <IonButton expand='block' color='success'> Add Set </IonButton>
                 </IonList>
                 <IonButton expand="block" onClick={this.save}>Save</IonButton>
             </React.Fragment>
