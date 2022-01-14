@@ -2,7 +2,6 @@ import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/r
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 import Menu from './components/Menu';
-import WorkoutLIst from './pages/main/workout-list';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -22,7 +21,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import WorkoutItem from './pages/main/workout-item';
+import ProgramItem from './pages/main/program.item';
 import TrainerItem from './pages/main/trainer-item';
 import TrainerList from './pages/main/trainer-list';
 import MuscleItem from './pages/main/muscle-item';
@@ -32,18 +31,33 @@ import ExerciseList from './pages/main/exercise-list';
 import WorkoutHistory from './pages/main/workout-history';
 import WorkoutPlan from './pages/main/workout-plan';
 import WorkoutRun from './pages/main/workout-run';
+import WorkoutCreate from './pages/main/program.create';
+import ProgramList from './pages/main/program.list';
+import ProgramCreate from './pages/main/program.create';
 
+import { init_data } from './init_data';
 
 setupIonicReact();
 
+// TODO: it is a bad place for it
 
 const App: React.FC = () => {
-  return (
+
+    init_data();
+
+    return (
     <IonApp>
       <IonReactRouter>
         <IonSplitPane contentId="main">
           <Menu />
           <IonRouterOutlet id="main">
+
+            <Route path="/program/list">        <ProgramList/>      </Route> 
+            <Route path="/program/item/:__id">  <ProgramItem/>      </Route> 
+            <Route path="/program/create">      <ProgramCreate/>    </Route> 
+            <Route path="/program-exercise/item/:__id">  <ProgramCreate/>    </Route> 
+            <Route path="/program-exercise/create">      <ProgramCreate/>    </Route> 
+
             <Route path="/workout/history">   <WorkoutHistory/></Route> 
             <Route path="/workout/plan">      <WorkoutPlan/>  </Route> 
             <Route path="/workout/run">       <WorkoutRun/>   </Route> 
@@ -53,9 +67,7 @@ const App: React.FC = () => {
             <Route path="/muscle/item/:id">   <MuscleItem/>   </Route> 
             <Route path="/trainer/list">      <TrainerList/>  </Route> 
             <Route path="/trainer/item/:id">  <TrainerItem/>  </Route> 
-            <Route path="/workout/list">      <WorkoutLIst/>  </Route> 
-            <Route path="/workout/item/:id">  <WorkoutItem/>  </Route> 
-            <Route path="/" exact={true}>     <Redirect to="/workout/list" /> </Route>
+            <Route path="/" exact={true}>     <Redirect to="/program/list" /> </Route>
           </IonRouterOutlet>
         </IonSplitPane>
       </IonReactRouter>

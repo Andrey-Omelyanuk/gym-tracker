@@ -21,7 +21,7 @@ interface AppPage {
 }
 
 const appPages: AppPage[] = [
-  { title: 'Workouts' , url: '/workout/list'  , iosIcon: mailOutline, mdIcon: mailSharp },
+  { title: 'Program'  , url: '/program/list'  , iosIcon: mailOutline, mdIcon: mailSharp },
   { title: 'Exercises', url: '/exercise/list' , iosIcon: mailOutline, mdIcon: mailSharp },
   { title: 'Muscles'  , url: '/muscle/list'   , iosIcon: mailOutline, mdIcon: mailSharp },
   { title: 'Trainers' , url: '/trainer/list'  , iosIcon: mailOutline, mdIcon: mailSharp },

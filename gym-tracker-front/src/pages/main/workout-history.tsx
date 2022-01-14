@@ -3,7 +3,7 @@ import { observer } from 'mobx-react'
 import { observable } from 'mobx'
 import { IonButton, IonProgressBar, IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonLabel, IonItem, IonBackButton } from '@ionic/react';
 import { Query } from 'mobx-orm';
-import Workout from '../../models/workout';
+import Workout from '../../models/program';
 import { RouteComponentProps } from 'react-router';
 
 
