@@ -32,10 +32,8 @@ import WorkoutHistory from './pages/main/workout-history';
 import WorkoutPlan from './pages/main/workout-plan';
 import WorkoutRun from './pages/main/workout-run';
 import WorkoutCreate from './pages/main/program.create';
-import ProgramList from './pages/main/program.list';
+import ProgramListPage from './pages/main/program.list.page';
 import ProgramCreate from './pages/main/program.create';
-
-import { init_data } from './init_data';
 
 setupIonicReact();
 
@@ -43,7 +41,6 @@ setupIonicReact();
 
 const App: React.FC = () => {
 
-    init_data();
 
     return (
     <IonApp>
@@ -52,7 +49,7 @@ const App: React.FC = () => {
           <Menu />
           <IonRouterOutlet id="main">
 
-            <Route path="/program/list">        <ProgramList/>      </Route> 
+            <Route path="/program/list">        <ProgramListPage/>      </Route> 
             <Route path="/program/item/:__id">  <ProgramItem/>      </Route> 
             <Route path="/program/create">      <ProgramCreate/>    </Route> 
             <Route path="/program-exercise/item/:__id">  <ProgramCreate/>    </Route> 

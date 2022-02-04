@@ -2,19 +2,19 @@
 import React from 'react'
 import { observer } from 'mobx-react'
 import { observable } from 'mobx'
-import { add } from 'ionicons/icons';
+import { add } from 'ionicons/icons'
 import { 
-    IonFab, IonFabButton, IonIcon, IonProgressBar, IonButtons, IonContent, 
-    IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonLabel, IonItem 
+    IonFab, IonFabButton, IonIcon, IonButtons, IonContent, IonProgressBar,
+    IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar
 } from '@ionic/react';
 import { Query } from 'mobx-orm';
 import Program from '../../models/program';
 
-import ProgramListItem from '../../components/program-list-item';
+import ProgramList from '../../components/program-list'
 
 
 @observer
-class ProgramList extends React.Component {
+class ProgramListPage extends React.Component {
 
     @observable programs: Query<Program>
 
@@ -26,7 +26,7 @@ class ProgramList extends React.Component {
     get is_ready() {
         return !!(this.programs && this.programs.is_ready) 
     }
-
+    
     render() {
         return (
             <IonPage>
@@ -38,12 +38,9 @@ class ProgramList extends React.Component {
                         <IonTitle>Programs</IonTitle>
                     </IonToolbar>
                 </IonHeader>
-
                 <IonContent fullscreen>
                     { !this.is_ready && <IonProgressBar type="indeterminate"></IonProgressBar>}
-                    {this.programs && this.programs.items.map(function(program: Program){
-                        return <ProgramListItem key={program.__id} program={program}></ProgramListItem>
-                    })}
+                    <ProgramList programs={this.programs}></ProgramList>
                     <IonFab vertical="top" horizontal="end" slot="fixed" edge>
                         <IonFabButton routerLink={`/program/create`}>
                             <IonIcon icon={add} />
@@ -55,4 +52,4 @@ class ProgramList extends React.Component {
     }
 }
 
-export default ProgramList
+export default ProgramListPage

@@ -1,4 +1,5 @@
-import { local, model, Model, id, field } from 'mobx-orm'
+import { action, runInAction } from 'mobx'
+import { local, model, Model, id, field, Query } from 'mobx-orm'
 import Exercise from './exercise'
 import ProgramSet from './program-set'
 
@@ -8,11 +9,31 @@ import ProgramSet from './program-set'
     @id    id 	: number 
     @field name	: string
     @field desc : string
+    @field order: number
 
     sets   : ProgramSet []
 
-    reorder(index_to: number) {
-
+    static moveTo(programs: Query<Program>, from: number, to: number ) {
+        // I have to use runInAction because @action does not work with static method
+        runInAction(() => {
+            // update "order" field for all items in the Query
+            for(let program of programs.items) {
+                if ((program.order < from && program.order < to) 
+                ||  (program.order > from && program.order > to)){
+                    continue
+                }
+                if (program.order === from) {
+                    program.order = to
+                }
+                else if (program.order > from && program.order <= to) {
+                    program.order = program.order - 1
+                }
+                else if (program.order >= to && program.order < from) {
+                    program.order = program.order + 1
+                }
+                program.save()
+            }
+        })
     }
 
     getOrderedSets() {

@@ -6,7 +6,6 @@ import ProgramSet   from "./models/program-set"
 
 
 export async function init_data() {
-
     let m_1 = new Muscle({name: 'm1'}); await m_1.save()
     let m_2 = new Muscle({name: 'm2'}); await m_2.save()
     let m_3 = new Muscle({name: 'm3'}); await m_3.save()
@@ -22,9 +21,10 @@ export async function init_data() {
     let e_3 = new Exercise({name: 'e3', trainer_id: t_2.id, muscle_id: m_4.id}); await e_3.save()
     let e_4 = new Exercise({name: 'e4', trainer_id: t_2.id, muscle_id: m_4.id}); await e_4.save()
 
-    let p_1 = new Program({name: 'p_1'}); await p_1.save()
-    let p_2 = new Program({name: 'p_2'}); await p_2.save()
-    let p_3 = new Program({name: 'p_3'}); await p_3.save()
+    let p_1 = new Program({name: 'Грудь', order: 1}); await p_1.save()
+    let p_2 = new Program({name: 'Cпина', order: 2}); await p_2.save()
+    let p_3 = new Program({name: 'Ноги' , order: 3}); await p_3.save()
+    let p_4 = new Program({name: 'Плечи', order: 0}); await p_4.save()
 
     let ps_1 = new ProgramSet({program_id: p_1.id, exercise_id: e_1.id, order: 1, reps: 10, weight: 10}); await ps_1.save()
     let ps_2 = new ProgramSet({program_id: p_1.id, exercise_id: e_2.id, order: 2, reps: 10, weight: 10}); await ps_2.save()

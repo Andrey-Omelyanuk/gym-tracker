@@ -48,13 +48,11 @@ class ProgramForm extends React.Component<ProgramFormProps> {
 
                 <div>Ex count: {this.props.program.sets.length}</div>
                 <IonList>
-                    <IonReorderGroup disabled={false} >
                     {this.props.program.getOrderedSets().map(function(pair) {
-                        return <React.Fragment>
+                        return <React.Fragment key={pair[0].__id}>
                                 <IonListHeader>{pair[0].name}</IonListHeader>
                                 {pair[1].map(function(set) { 
                                     return <IonItem key={set.__id}>
-                                        <IonReorder slot="start" />
                                         <IonLabel>{set.exercise.name} {set.reps}reps {set.weight}kg</IonLabel>
                                         <IonButton slot="start">
                                             <IonIcon icon={duplicateOutline} />
@@ -66,7 +64,6 @@ class ProgramForm extends React.Component<ProgramFormProps> {
                                 })}
                             </React.Fragment>
                     })}
-                    </IonReorderGroup>
                     <IonButton expand='block' color='success'> Add Set </IonButton>
                 </IonList>
                 <IonButton expand="block" onClick={this.save}>Save</IonButton>

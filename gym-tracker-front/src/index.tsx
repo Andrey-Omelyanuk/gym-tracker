@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import { init_data } from './init_data';
+setTimeout(() => {
+    init_data();
+})
 
 ReactDOM.render(
   <React.StrictMode>
