@@ -6,20 +6,20 @@ import ProgramSet   from "./models/program-set"
 
 
 export async function init_data() {
-    let m_1 = new Muscle({name: 'm1'}); await m_1.save()
-    let m_2 = new Muscle({name: 'm2'}); await m_2.save()
-    let m_3 = new Muscle({name: 'm3'}); await m_3.save()
-    let m_4 = new Muscle({name: 'm4'}); await m_4.save()
+    let m_1 = new Muscle({name: 'm1', order: 0}); await m_1.save()
+    let m_2 = new Muscle({name: 'm2', order: 1}); await m_2.save()
+    let m_3 = new Muscle({name: 'm3', order: 2}); await m_3.save()
+    let m_4 = new Muscle({name: 'm4', order: 3}); await m_4.save()
 
     let t_1 = new Trainer({name: 't1'}); await t_1.save()
     let t_2 = new Trainer({name: 't2'}); await t_2.save()
     let t_3 = new Trainer({name: 't3'}); await t_3.save()
     let t_4 = new Trainer({name: 't4'}); await t_4.save()
 
-    let e_1 = new Exercise({name: 'e1', trainer_id: t_1.id, muscle_id: m_1.id}); await e_1.save()
-    let e_2 = new Exercise({name: 'e2', trainer_id: t_1.id, muscle_id: m_2.id}); await e_2.save()
-    let e_3 = new Exercise({name: 'e3', trainer_id: t_2.id, muscle_id: m_4.id}); await e_3.save()
-    let e_4 = new Exercise({name: 'e4', trainer_id: t_2.id, muscle_id: m_4.id}); await e_4.save()
+    let e_1 = new Exercise({name: 'Присед'          , order: 0, trainer_id: t_1.id, muscle_id: m_1.id}); await e_1.save()
+    let e_2 = new Exercise({name: 'Жим лежа'        , order: 1, trainer_id: t_1.id, muscle_id: m_2.id}); await e_2.save()
+    let e_3 = new Exercise({name: 'Подтягивание'    , order: 2, trainer_id: t_2.id, muscle_id: m_4.id}); await e_3.save()
+    let e_4 = new Exercise({name: 'Махи в сторону'  , order: 3, trainer_id: t_2.id, muscle_id: m_4.id}); await e_4.save()
 
     let p_1 = new Program({name: 'Грудь', order: 1}); await p_1.save()
     let p_2 = new Program({name: 'Cпина', order: 2}); await p_2.save()

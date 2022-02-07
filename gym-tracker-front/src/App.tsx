@@ -22,26 +22,20 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import ProgramItem from './pages/main/program.item';
-import TrainerItem from './pages/main/trainer-item';
-import TrainerList from './pages/main/trainer-list';
-import MuscleItem from './pages/main/muscle-item';
-import MuscleList from './pages/main/muscle-list';
-import ExerciseItem from './pages/main/exercise-item';
-import ExerciseList from './pages/main/exercise-list';
 import WorkoutHistory from './pages/main/workout-history';
 import WorkoutPlan from './pages/main/workout-plan';
 import WorkoutRun from './pages/main/workout-run';
-import WorkoutCreate from './pages/main/program.create';
 import ProgramListPage from './pages/main/program.list.page';
 import ProgramCreate from './pages/main/program.create';
+import ModelPage from './components/admin/model.page';
+
+import Exercise from './models/exercise';
+import Muscle from './models/muscle';
+import Trainer from './models/trainer';
 
 setupIonicReact();
 
-// TODO: it is a bad place for it
-
 const App: React.FC = () => {
-
-
     return (
     <IonApp>
       <IonReactRouter>
@@ -58,13 +52,12 @@ const App: React.FC = () => {
             <Route path="/workout/history">   <WorkoutHistory/></Route> 
             <Route path="/workout/plan">      <WorkoutPlan/>  </Route> 
             <Route path="/workout/run">       <WorkoutRun/>   </Route> 
-            <Route path="/exercise/list">     <ExerciseList/> </Route> 
-            <Route path="/exercise/item/:id"> <ExerciseItem/> </Route> 
-            <Route path="/muscle/list">       <MuscleList/>   </Route> 
-            <Route path="/muscle/item/:id">   <MuscleItem/>   </Route> 
-            <Route path="/trainer/list">      <TrainerList/>  </Route> 
-            <Route path="/trainer/item/:id">  <TrainerItem/>  </Route> 
-            <Route path="/" exact={true}>     <Redirect to="/program/list" /> </Route>
+
+            <Route path="/exercise/" render={(props) => <ModelPage {...props} model={Exercise}/>    }></Route> 
+            <Route path="/muscle/"   render={(props) => <ModelPage {...props} model={Muscle}/>      }></Route> 
+            <Route path="/trainer/"  render={(props) => <ModelPage {...props} model={Trainer}/>     }></Route> 
+
+            <Route path="/" exact={true}><Redirect to="/program/list" /></Route>
           </IonRouterOutlet>
         </IonSplitPane>
       </IonReactRouter>

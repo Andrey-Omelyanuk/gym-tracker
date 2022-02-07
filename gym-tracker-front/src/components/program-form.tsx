@@ -38,15 +38,9 @@ class ProgramForm extends React.Component<ProgramFormProps> {
                 <IonList lines='full'>
                     <IonItem>
                         <IonLabel position='stacked'>Title</IonLabel>
-                            <IonInput value={this.props.program.name} onIonChange={this.handleNameChange}></IonInput>
-                        </IonItem>
-                    <IonItem>
-                        <IonLabel position='stacked'>Desc</IonLabel>
-                        <IonTextarea value={this.props.program.desc} onIonChange={this.handleDescChange}></IonTextarea>
+                        <IonInput value={this.props.program.name} onIonChange={this.handleNameChange}></IonInput>
                     </IonItem>
                 </IonList>
-
-                <div>Ex count: {this.props.program.sets.length}</div>
                 <IonList>
                     {this.props.program.getOrderedSets().map(function(pair) {
                         return <React.Fragment key={pair[0].__id}>
@@ -64,9 +58,12 @@ class ProgramForm extends React.Component<ProgramFormProps> {
                                 })}
                             </React.Fragment>
                     })}
-                    <IonButton expand='block' color='success'> Add Set </IonButton>
                 </IonList>
-                <IonButton expand="block" onClick={this.save}>Save</IonButton>
+                <section style={{display: "flex", justifyContent: "space-evenly"}}>
+                    <IonButton size='large' color='secondary'> Copy Prev Set </IonButton>
+                    <IonButton size='large' color='success'> Add New Set </IonButton>
+                </section>
+                {/* <IonButton expand="block" onClick={this.save}>Save</IonButton> */}
             </React.Fragment>
         )
     }

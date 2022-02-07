@@ -13,7 +13,6 @@ class ProgramListItem extends React.Component<ProgramListItemProps> {
   render() {
     return (
         <IonItem routerLink={`/program/item/${this.props.program.__id}`}>
-        {/* <IonItem> */}
             <IonLabel>{this.props.program.id} - {this.props.program.name} - {this.props.program.order} </IonLabel>
             <IonReorder slot="end" />
         </IonItem>

@@ -2,18 +2,18 @@ import React from 'react'
 import { computed } from 'mobx'
 import { observer } from 'mobx-react'
 import { Query    } from 'mobx-orm'
-import { moveTo } from '../models/utils'
-import Program    from '../models/program'
+import { moveTo   } from '../models/utils'
+import Exercise from '../models/exercise'
 
 import { IonReorderGroup } from '@ionic/react'
-import ProgramListItem from './program-list-item'
+import ExerciseListItem from './exercise-list-item'
 
-type ProgramListProps = {
-    programs: Query<Program>
+type ExerciseListProps = {
+    exercises: Query<Exercise>
 }
 
 @observer
-class ProgramList extends React.Component<ProgramListProps> {
+class ExerciseList extends React.Component<ExerciseListProps> {
 
     constructor(props) {
         super(props);
@@ -21,11 +21,11 @@ class ProgramList extends React.Component<ProgramListProps> {
     }
 
     @computed get programs() {
-        return this.props.programs.items.slice().sort((a, b) => a.order - b.order)
+        return this.props.exercises.items.slice().sort((a, b) => a.order - b.order)
     }
 
     async onDragEnd(event) {
-        moveTo(this.props.programs, event.detail.from, event.detail.to)
+        moveTo(this.props.exercises, event.detail.from, event.detail.to)
         event.detail.complete()
     }
 
@@ -33,12 +33,12 @@ class ProgramList extends React.Component<ProgramListProps> {
         console.log('render')
         return (
             <IonReorderGroup disabled={false} onIonItemReorder={this.onDragEnd} >
-                {this.programs.map(function(program: Program) {
-                    return <ProgramListItem program={program} key={program.__id}></ProgramListItem>
+                {this.programs.map(function(exercise: Exercise) {
+                    return <ExerciseListItem exercise={exercise} key={exercise.__id}></ExerciseListItem>
                 })}
             </IonReorderGroup>
         );
     }
 }
 
-export default ProgramList
+export default ExerciseList

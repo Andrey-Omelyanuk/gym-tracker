@@ -7,6 +7,7 @@ import Trainer from './trainer'
 @model export default class Exercise extends Model { 
     @id     id          : number 
     @field  name        : string
+    @field  order       : number
 
     @foreign(Trainer)   trainer : Trainer 
     @foreign(Muscle)    muscle  : Muscle

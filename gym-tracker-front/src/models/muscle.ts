@@ -6,6 +6,7 @@ import Exercise from './exercise'
 @model export default class Muscle extends Model { 
     @id    id 	: number 
     @field name	: string
+    @field order: number 
 
     exercises   : Exercise[]
 }
